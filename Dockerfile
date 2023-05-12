@@ -9,9 +9,6 @@ FROM node:18
 # creates app directory where source code will go
 WORKDIR /app
 
-# exposes 3000 port needed for app
-EXPOSE 3000
-
 # ---- CACHING TECHNIQUES FOR NPM INSTALL ----
 # copy package.json & package-lock.json files to the image working directory
 COPY package*.json ./
@@ -22,3 +19,9 @@ RUN npm install
 # copies source code to inside docker image
 COPY . .
 # --------------------------------------------
+
+# exposes 3000 port needed for app
+EXPOSE 3000
+
+# command for running the app
+CMD node index.js
